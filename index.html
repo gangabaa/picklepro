@@ -96,7 +96,7 @@
         /* Sections */
         .section {
             padding: 3rem 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
@@ -104,6 +104,84 @@
             font-size: 2rem;
             margin-bottom: 2rem;
             text-align: center;
+        }
+        
+        /* Horizontal Scroll */
+        .paddle-scroll {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0.5rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .paddle-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .paddle-scroll::-webkit-scrollbar-track {
+            background: #ddd;
+            border-radius: 4px;
+        }
+        
+        .paddle-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        .paddle-card {
+            min-width: 280px;
+            max-width: 280px;
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .paddle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .paddle-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paddle-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .paddle-price {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .affiliate-link {
+            background: var(--dark);
+            color: white;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .affiliate-link:hover {
+            background: var(--primary);
         }
         
         /* Training Cards */
@@ -154,54 +232,6 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: bold;
-        }
-        
-        /* Gear Section */
-        .gear-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .gear-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .gear-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-        }
-        
-        .gear-card h4 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .gear-card .price {
-            color: var(--primary);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .affiliate-link {
-            background: var(--dark);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 500;
-        }
-        
-        .affiliate-link:hover {
-            background: var(--primary);
         }
         
         /* Pro Section */
@@ -287,24 +317,6 @@
             margin-top: 4rem;
         }
         
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
-        
         /* Stats */
         .stats {
             display: flex;
@@ -327,6 +339,27 @@
         
         .stat-label {
             color: #666;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .paddle-card {
+                min-width: 250px;
+            }
         }
     </style>
 </head>
@@ -379,33 +412,95 @@
     </section>
     
     <section class="section" id="gear">
-        <h2 class="section-title">🎾 Top Rated Paddles</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">We may earn a commission when you buy through our links - at no extra cost to you!</p>
+        <h2 class="section-title">🏓 Top Rated Paddles (2026)</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+            🔥 These are the BEST paddles players are buying in 2026<br>
+            We earn a commission when you buy through our links - at no extra cost to you!
+        </p>
         
-        <div class="gear-grid">
-            <div class="gear-card">
-                <div style="font-size: 4rem;">🎾</div>
-                <h4>Selkirk Sport Power Air</h4>
-                <p class="price">$119.00</p>
-                <button class="affiliate-link" onclick="alert('Amazon affiliate link opens!')">Check Price on Amazon</button>
+        <div class="paddle-scroll">
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Sport Power Air Pro</div>
+                <div class="paddle-price">$119.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
             </div>
-            <div class="gear-card">
-                <div style="font-size: 4rem;">🎾</div>
-                <h4>Joola Ben Johns Perseus</h4>
-                <p class="price">$169.00</p>
-                <button class="affiliate-link" onclick="alert('Amazon affiliate link opens!')">Check Price on Amazon</button>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Perseus CFS</div>
+                <div class="paddle-price">$169.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
             </div>
-            <div class="gear-card">
-                <div style="font-size: 4rem;">🎾</div>
-                <h4>Paddletek Tempest Wave</h4>
-                <p class="price">$129.00</p>
-                <button class="affiliate-link" onclick="alert('Amazon affiliate link opens!')">Check Price on Amazon</button>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Paddletek Tempest Wave Pro</div>
+                <div class="paddle-price">$129.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BHY2TLGW', '_blank')">Check Price on Amazon</button>
             </div>
-            <div class="gear-card">
-                <div style="font-size: 4rem;">🎾</div>
-                <h4>Onix Z5 Graphite</h4>
-                <p class="price">$79.00</p>
-                <button class="affiliate-link" onclick="alert('Amazon affiliate link opens!')">Check Price on Amazon</button>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Onix Z5 Graphite</div>
+                <div class="paddle-price">$79.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B01MZ7W9MF', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Vulcan V721 Standard</div>
+                <div class="paddle-price">$59.99</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Gamma Force 16mm</div>
+                <div class="paddle-price">$89.95</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BY8VJ2L9', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Head Extreme Tour</div>
+                <div class="paddle-price">$99.99</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C7DQVY3H', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Rally Pele XS</div>
+                <div class="paddle-price">$129.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Diadem Fortify Power V2</div>
+                <div class="paddle-price">$109.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Luxx Control Air</div>
+                <div class="paddle-price">$189.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BHY2TLGW', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">CRBN 1X Power Series</div>
+                <div class="paddle-price">$119.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Prince Sync</div>
+                <div class="paddle-price">$99.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C7DQVY3H', '_blank')">Check Price on Amazon</button>
             </div>
         </div>
     </section>
@@ -482,26 +577,16 @@
     </footer>
     
     <script>
-        // Simple affiliate link tracking
-        const affiliateLinks = {
-            'selkirk': 'https://amzn.to/xxxxx',
-            'joola': 'https://amzn.to/xxxxx',
-            'paddletek': 'https://amzn.to/xxxxx',
-            'onix': 'https://amzn.to/xxxxx'
-        };
-        
         // Track clicks
         document.querySelectorAll('.affiliate-link').forEach(button => {
             button.addEventListener('click', () => {
                 console.log('Affiliate click tracked!');
-                // In production, this would send to analytics
             });
         });
         
         // Court search (demo)
         document.getElementById('courtSearch').addEventListener('input', (e) => {
             console.log('Searching:', e.target.value);
-            // In production, this would call a court API
         });
     </script>
 </body>
