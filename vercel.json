@@ -1,0 +1,10 @@
+{
+  "name": "picklepro",
+  "version": 1,
+  "builds": [
+    { "use": "@vercel/static", "src": "**/*" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
