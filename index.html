@@ -17,6 +17,8 @@
             --dark: #1a1a2e;
             --light: #f5f5f5;
             --accent: #E74C3C;
+            --joola: #FF6B35;
+            --selkirk: #00D4FF;
         }
         
         body {
@@ -106,6 +108,37 @@
             text-align: center;
         }
         
+        /* Brand Section */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .brand-logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .brand-tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .joola-tag {
+            background: var(--joola);
+            color: white;
+        }
+        
+        .selkirk-tag {
+            background: var(--selkirk);
+            color: var(--dark);
+        }
+        
         /* Horizontal Scroll */
         .paddle-scroll {
             display: flex;
@@ -114,6 +147,7 @@
             padding: 1rem 0.5rem;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            margin-bottom: 3rem;
         }
         
         .paddle-scroll::-webkit-scrollbar {
@@ -140,10 +174,19 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             flex-shrink: 0;
+            border: 3px solid transparent;
         }
         
         .paddle-card:hover {
             transform: translateY(-5px);
+        }
+        
+        .paddle-card.joola:hover {
+            border-color: var(--joola);
+        }
+        
+        .paddle-card.selkirk:hover {
+            border-color: var(--selkirk);
         }
         
         .paddle-emoji {
@@ -153,9 +196,9 @@
         
         .paddle-name {
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
-            min-height: 3rem;
+            min-height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -418,89 +461,185 @@
             We earn a commission when you buy through our links - at no extra cost to you!
         </p>
         
+        <!-- JOOLA SECTION -->
+        <div class="brand-header">
+            <span class="brand-logo" style="color: var(--joola);">⚡ JOOLA</span>
+            <span class="brand-tag joola-tag">2026 Collection</span>
+        </div>
         <div class="paddle-scroll">
-            <div class="paddle-card">
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Perseus CFS 14mm</div>
+                <div class="paddle-price">$169.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Perseus 16mm</div>
+                <div class="paddle-price">$179.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Sphinx 14mm</div>
+                <div class="paddle-price">$159.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Hyperion CFS</div>
+                <div class="paddle-price">$189.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Dynasty CFS</div>
+                <div class="paddle-price">$199.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Phoenix</div>
+                <div class="paddle-price">$149.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Eclipse</div>
+                <div class="paddle-price">$169.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Ben Johns Infinity</div>
+                <div class="paddle-price">$189.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Solaire CFS</div>
+                <div class="paddle-price">$139.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Vision CFS</div>
+                <div class="paddle-price">$129.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Radius CFS</div>
+                <div class="paddle-price">$119.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card joola">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Joola Triumph</div>
+                <div class="paddle-price">$99.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
+            </div>
+        </div>
+        
+        <!-- SELKIRK SECTION -->
+        <div class="brand-header">
+            <span class="brand-logo" style="color: var(--selkirk);">🔵 SELKIRK</span>
+            <span class="brand-tag selkirk-tag">2026 Collection</span>
+        </div>
+        <div class="paddle-scroll">
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Luxx Control Air</div>
+                <div class="paddle-price">$189.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Luxx Air Invikta</div>
+                <div class="paddle-price">$199.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
                 <div class="paddle-emoji">🏓</div>
                 <div class="paddle-name">Selkirk Sport Power Air Pro</div>
                 <div class="paddle-price">$119.00</div>
                 <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
             </div>
             
-            <div class="paddle-card">
+            <div class="paddle-card selkirk">
                 <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Perseus CFS</div>
-                <div class="paddle-price">$169.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Paddletek Tempest Wave Pro</div>
-                <div class="paddle-price">$129.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BHY2TLGW', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Onix Z5 Graphite</div>
-                <div class="paddle-price">$79.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B01MZ7W9MF', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Vulcan V721 Standard</div>
-                <div class="paddle-price">$59.99</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Gamma Force 16mm</div>
-                <div class="paddle-price">$89.95</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BY8VJ2L9', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Head Extreme Tour</div>
-                <div class="paddle-price">$99.99</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C7DQVY3H', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Rally Pele XS</div>
+                <div class="paddle-name">Selkirk Sport Power Air Invikta</div>
                 <div class="paddle-price">$129.00</div>
                 <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
             </div>
             
-            <div class="paddle-card">
+            <div class="paddle-card selkirk">
                 <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Diadem Fortify Power V2</div>
+                <div class="paddle-name">Selkirk Sport Vladr</div>
                 <div class="paddle-price">$109.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Luxx Control Air</div>
-                <div class="paddle-price">$189.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BHY2TLGW', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">CRBN 1X Power Series</div>
-                <div class="paddle-price">$119.00</div>
                 <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
             </div>
             
-            <div class="paddle-card">
+            <div class="paddle-card selkirk">
                 <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Prince Sync</div>
+                <div class="paddle-name">Selkirk Sport Epic</div>
+                <div class="paddle-price">$89.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Amped S2</div>
                 <div class="paddle-price">$99.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C7DQVY3H', '_blank')">Check Price on Amazon</button>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Amped Invikta</div>
+                <div class="paddle-price">$109.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Edge Flex</div>
+                <div class="paddle-price">$149.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Edge Pro</div>
+                <div class="paddle-price">$179.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk 2026 Pro Edition</div>
+                <div class="paddle-price">$229.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
+            </div>
+            
+            <div class="paddle-card selkirk">
+                <div class="paddle-emoji">🏓</div>
+                <div class="paddle-name">Selkirk Vanguard Control</div>
+                <div class="paddle-price">$99.00</div>
+                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
             </div>
         </div>
     </section>
