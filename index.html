@@ -5,728 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PicklePro - Master Pickleball</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        :root {
-            --primary: #2ECC71;
-            --dark: #1a1a2e;
-            --light: #f5f5f5;
-            --accent: #E74C3C;
-            --joola: #FF6B35;
-            --selkirk: #00D4FF;
-        }
-        
-        body {
-            background: var(--light);
-            color: var(--dark);
-        }
-        
-        /* Header */
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Sections */
-        .section {
-            padding: 3rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        /* Brand Section */
-        .brand-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .brand-logo {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        
-        .brand-tag {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        .joola-tag {
-            background: var(--joola);
-            color: white;
-        }
-        
-        .selkirk-tag {
-            background: var(--selkirk);
-            color: var(--dark);
-        }
-        
-        /* Horizontal Scroll */
-        .paddle-scroll {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding: 1rem 0.5rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 3rem;
-        }
-        
-        .paddle-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .paddle-scroll::-webkit-scrollbar-track {
-            background: #ddd;
-            border-radius: 4px;
-        }
-        
-        .paddle-scroll::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-        
-        .paddle-card {
-            min-width: 280px;
-            max-width: 280px;
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            border: 3px solid transparent;
-        }
-        
-        .paddle-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .paddle-card.joola:hover {
-            border-color: var(--joola);
-        }
-        
-        .paddle-card.selkirk:hover {
-            border-color: var(--selkirk);
-        }
-        
-        .paddle-emoji {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .paddle-name {
-            font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            min-height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .paddle-price {
-            color: var(--primary);
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .affiliate-link {
-            background: var(--dark);
-            color: white;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-        
-        .affiliate-link:hover {
-            background: var(--primary);
-        }
-        
-        /* Training Cards */
-        .training-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .training-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .training-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-image {
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary), #27ae60);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-        }
-        
-        .card-content h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .card-content p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .premium-badge {
-            background: var(--accent);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        /* Pro Section */
-        .pro-section {
-            background: linear-gradient(135deg, var(--primary), #27ae60);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 20px;
-            margin: 2rem 0;
-        }
-        
-        .pro-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .pro-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-            max-width: 400px;
-            margin: 2rem auto;
-        }
-        
-        .pro-features li {
-            padding: 0.5rem 0;
-            font-size: 1.1rem;
-        }
-        
-        .pro-features li::before {
-            content: "✓";
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .pro-price {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-        
-        .pro-price span {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-        
-        /* Court Finder */
-        .court-finder {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .court-finder input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .court-list {
-            margin-top: 1rem;
-        }
-        
-        .court-item {
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        /* Stats */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            padding: 2rem;
-            background: white;
-            margin: 2rem 0;
-            border-radius: 12px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            color: #666;
-        }
-        
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .paddle-card {
-                min-width: 250px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        :root { --primary: #2ECC71; --dark: #1a1a2e; --light: #f5f5f5; --accent: #E74C3C; --joola: #FF6B35; --selkirk: #00D4FF; }
+        body { background: var(--light); color: var(--dark); }
+        header { background: var(--dark); color: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); }
+        .hero { background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+        .cta-button { background: var(--primary); color: white; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+        .cta-button:hover { transform: scale(1.05); }
+        .section { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .brand-logo { font-size: 2rem; font-weight: bold; }
+        .brand-tag { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .joola-tag { background: var(--joola); color: white; }
+        .selkirk-tag { background: var(--selkirk); color: var(--dark); }
+        .paddle-scroll { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 0.5rem; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; margin-bottom: 3rem; }
+        .paddle-scroll::-webkit-scrollbar { height: 8px; }
+        .paddle-scroll::-webkit-scrollbar-track { background: #ddd; border-radius: 4px; }
+        .paddle-scroll::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        .paddle-card { min-width: 280px; max-width: 280px; background: white; border-radius: 16px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; flex-shrink: 0; border: 3px solid transparent; }
+        .paddle-card:hover { transform: translateY(-5px); }
+        .paddle-card.joola:hover { border-color: var(--joola); }
+        .paddle-card.selkirk:hover { border-color: var(--selkirk); }
+        .paddle-image { width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; border-radius: 8px; background: #f8f8f8; }
+        .paddle-name { font-weight: bold; font-size: 0.95rem; margin-bottom: 0.5rem; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
+        .paddle-price { color: var(--primary); font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+        .affiliate-link { background: var(--dark); color: white; padding: 0.8rem 1rem; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 500; transition: background 0.2s; }
+        .affiliate-link:hover { background: var(--primary); }
+        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .training-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .training-card:hover { transform: translateY(-5px); }
+        .card-image { height: 200px; background: linear-gradient(45deg, var(--primary), #27ae60); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { margin-bottom: 0.5rem; }
+        .card-content p { color: #666; margin-bottom: 1rem; }
+        .premium-badge { background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .pro-section { background: linear-gradient(135deg, var(--primary), #27ae60); color: white; padding: 4rem 2rem; text-align: center; border-radius: 20px; margin: 2rem 0; }
+        .pro-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .pro-features { list-style: none; margin: 2rem 0; text-align: left; max-width: 400px; margin: 2rem auto; }
+        .pro-features li { padding: 0.5rem 0; font-size: 1.1rem; }
+        .pro-features li::before { content: "✓"; margin-right: 0.5rem; font-weight: bold; }
+        .pro-price { font-size: 3rem; font-weight: bold; margin: 1rem 0; }
+        .pro-price span { font-size: 1rem; opacity: 0.8; }
+        .court-finder { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .court-search-box { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .court-search-box input { flex: 1; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        .court-search-box button { padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+        #map { width: 100%; height: 400px; border-radius: 12px; background: #e8e8e8; margin-bottom: 1.5rem; }
+        .court-list { margin-top: 1.5rem; max-height: 300px; overflow-y: auto; }
+        .court-item { padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+        .court-item:hover { background: #f5f5f5; }
+        .court-item.active { background: #e8f5e9; border-left: 4px solid var(--primary); }
+        footer { background: var(--dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
+        .stats { display: flex; justify-content: space-around; padding: 2rem; background: white; margin: 2rem 0; border-radius: 12px; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; color: var(--primary); }
+        .stat-label { color: #666; }
+        .menu-toggle { display: none; font-size: 1.5rem; }
+        @media (max-width: 768px) { .nav-links { display: none; } .menu-toggle { display: block; } .hero h1 { font-size: 2rem; } .paddle-card { min-width: 250px; } .court-search-box { flex-direction: column; } }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">🏓 PicklePro</div>
+        <div class="logo">PicklePro</div>
         <nav class="nav-links">
             <a href="#training">Training</a>
             <a href="#gear">Gear</a>
             <a href="#courts">Courts</a>
             <a href="#pro">Pro</a>
         </nav>
-        <div class="menu-toggle">☰</div>
     </header>
-    
     <section class="hero">
         <h1>Master Pickleball Fast</h1>
         <p>AI-powered training, pro tips, and the best gear - all in one app</p>
         <button class="cta-button" onclick="document.getElementById('pro').scrollIntoView()">Go Pro - $9.99/mo</button>
     </section>
-    
     <section class="section" id="training">
-        <h2 class="section-title">🔥 Free Training</h2>
+        <h2 class="section-title">Free Training</h2>
         <div class="training-grid">
-            <div class="training-card">
-                <div class="card-image">🎯</div>
-                <div class="card-content">
-                    <h3>Serve Mastery</h3>
-                    <p>Learn the top 5 serves that every pro uses</p>
-                    <span class="premium-badge">FREE</span>
-                </div>
-            </div>
-            <div class="training-card">
-                <div class="card-image">💪</div>
-                <div class="card-content">
-                    <h3>Dink Fundamentals</h3>
-                    <p>The secret to controlling the kitchen</p>
-                    <span class="premium-badge">FREE</span>
-                </div>
-            </div>
-            <div class="training-card">
-                <div class="card-image">🏃</div>
-                <div class="card-content">
-                    <h3>Footwork Drills</h3>
-                    <p>Quick feet = better defense</p>
-                    <span class="premium-badge">PRO ONLY</span>
-                </div>
-            </div>
+            <div class="training-card"><div class="card-image">🎯</div><div class="card-content"><h3>Serve Mastery</h3><p>Learn the top 5 serves that every pro uses</p><span class="premium-badge">FREE</span></div></div>
+            <div class="training-card"><div class="card-image">💪</div><div class="card-content"><h3>Dink Fundamentals</h3><p>The secret to controlling the kitchen</p><span class="premium-badge">FREE</span></div></div>
+            <div class="training-card"><div class="card-image">🏃</div><div class="card-content"><h3>Footwork Drills</h3><p>Quick feet = better defense</p><span class="premium-badge">PRO ONLY</span></div></div>
         </div>
     </section>
-    
     <section class="section" id="gear">
-        <h2 class="section-title">🏓 Top Rated Paddles (2026)</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-            🔥 These are the BEST paddles players are buying in 2026<br>
-            We earn a commission when you buy through our links - at no extra cost to you!
-        </p>
+        <h2 class="section-title">Top Rated Paddles (2026)</h2>
+        <p style="text-align:center;margin-bottom:2rem;color:#666;">These are the BEST paddles players are buying in 2026<br>We earn a commission when you buy through our links!</p>
         
-        <!-- JOOLA SECTION -->
-        <div class="brand-header">
-            <span class="brand-logo" style="color: var(--joola);">⚡ JOOLA</span>
-            <span class="brand-tag joola-tag">2026 Collection</span>
-        </div>
+        <div class="brand-header"><span class="brand-logo" style="color:var(--joola);">⚡ JOOLA</span><span class="brand-tag joola-tag">2026 Collection</span></div>
         <div class="paddle-scroll">
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Perseus CFS 14mm</div>
-                <div class="paddle-price">$169.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Perseus 16mm</div>
-                <div class="paddle-price">$179.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Sphinx 14mm</div>
-                <div class="paddle-price">$159.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Hyperion CFS</div>
-                <div class="paddle-price">$189.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Dynasty CFS</div>
-                <div class="paddle-price">$199.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Phoenix</div>
-                <div class="paddle-price">$149.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Eclipse</div>
-                <div class="paddle-price">$169.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Ben Johns Infinity</div>
-                <div class="paddle-price">$189.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Solaire CFS</div>
-                <div class="paddle-price">$139.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Vision CFS</div>
-                <div class="paddle-price">$129.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Radius CFS</div>
-                <div class="paddle-price">$119.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card joola">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Joola Triumph</div>
-                <div class="paddle-price">$99.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0C4HR7B8N', '_blank')">Check Price on Amazon</button>
-            </div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Perseus'"><div class="paddle-name">Ben Johns Perseus CFS 14mm</div><div class="paddle-price">$169</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+ben+johns+perseus','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Perseus+16mm'"><div class="paddle-name">Ben Johns Perseus 16mm</div><div class="paddle-price">$179</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+perseus+16mm','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Sphinx'"><div class="paddle-name">Ben Johns Sphinx 14mm</div><div class="paddle-price">$159</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+sphinx','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Hyperion'"><div class="paddle-name">Ben Johns Hyperion CFS</div><div class="paddle-price">$189</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+hyperion','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Dynasty'"><div class="paddle-name">Ben Johns Dynasty CFS</div><div class="paddle-price">$199</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+dynasty','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Phoenix'"><div class="paddle-name">Ben Johns Phoenix</div><div class="paddle-price">$149</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+phoenix','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Eclipse'"><div class="paddle-name">Ben Johns Eclipse</div><div class="paddle-price">$169</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+eclipse','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Infinity'"><div class="paddle-name">Ben Johns Infinity</div><div class="paddle-price">$189</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+infinity','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Solaire'"><div class="paddle-name">Joola Solaire CFS</div><div class="paddle-price">$139</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+solaire','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Vision'"><div class="paddle-name">Joola Vision CFS</div><div class="paddle-price">$129</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+vision','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Radius'"><div class="paddle-name">Joola Radius CFS</div><div class="paddle-price">$119</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+radius','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card joola"><img src="https://images.unsplash.com/photo-1617083934551-ac1f1b6a50ea?w=400&h=400&fit=crop" alt="Joola" class="paddle-image" onerror="this.src='https://placehold.co/400x180/FF6B35/white?text=Joola+Triumph'"><div class="paddle-name">Joola Triumph</div><div class="paddle-price">$99</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=joola+triumph','_blank')">Check Price on Amazon</button></div>
         </div>
         
-        <!-- SELKIRK SECTION -->
-        <div class="brand-header">
-            <span class="brand-logo" style="color: var(--selkirk);">🔵 SELKIRK</span>
-            <span class="brand-tag selkirk-tag">2026 Collection</span>
-        </div>
+        <div class="brand-header"><span class="brand-logo" style="color:var(--selkirk);">🔵 SELKIRK</span><span class="brand-tag selkirk-tag">2026 Collection</span></div>
         <div class="paddle-scroll">
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Luxx Control Air</div>
-                <div class="paddle-price">$189.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Luxx Air Invikta</div>
-                <div class="paddle-price">$199.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Sport Power Air Pro</div>
-                <div class="paddle-price">$119.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Sport Power Air Invikta</div>
-                <div class="paddle-price">$129.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Sport Vladr</div>
-                <div class="paddle-price">$109.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Sport Epic</div>
-                <div class="paddle-price">$89.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Amped S2</div>
-                <div class="paddle-price">$99.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Amped Invikta</div>
-                <div class="paddle-price">$109.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Edge Flex</div>
-                <div class="paddle-price">$149.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Edge Pro</div>
-                <div class="paddle-price">$179.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk 2026 Pro Edition</div>
-                <div class="paddle-price">$229.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
-            
-            <div class="paddle-card selkirk">
-                <div class="paddle-emoji">🏓</div>
-                <div class="paddle-name">Selkirk Vanguard Control</div>
-                <div class="paddle-price">$99.00</div>
-                <button class="affiliate-link" onclick="window.open('https://www.amazon.com/dp/B0BQFBH8FZ', '_blank')">Check Price on Amazon</button>
-            </div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Luxx'"><div class="paddle-name">Selkirk Luxx Control Air</div><div class="paddle-price">$189</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+luxx','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Luxx+Invikta'"><div class="paddle-name">Selkirk Luxx Air Invikta</div><div class="paddle-price">$199</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+luxx+invikta','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Power+Air'"><div class="paddle-name">Selkirk Sport Power Air Pro</div><div class="paddle-price">$119</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+power+air','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Invikta'"><div class="paddle-name">Selkirk Sport Power Air Invikta</div><div class="paddle-price">$129</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+power+air+invikta','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Vladr'"><div class="paddle-name">Selkirk Sport Vladr</div><div class="paddle-price">$109</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+vladr','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Epic'"><div class="paddle-name">Selkirk Sport Epic</div><div class="paddle-price">$89</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+epic','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Amped+S2'"><div class="paddle-name">Selkirk Amped S2</div><div class="paddle-price">$99</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+amped','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Amped+Invikta'"><div class="paddle-name">Selkirk Amped Invikta</div><div class="paddle-price">$109</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+amped+invikta','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Edge+Flex'"><div class="paddle-name">Selkirk Edge Flex</div><div class="paddle-price">$149</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+edge','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Edge+Pro'"><div class="paddle-name">Selkirk Edge Pro</div><div class="paddle-price">$179</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+edge+pro','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+2026'"><div class="paddle-name">Selkirk 2026 Pro Edition</div><div class="paddle-price">$229</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+2026','_blank')">Check Price on Amazon</button></div>
+            <div class="paddle-card selkirk"><img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=400&h=400&fit=crop" alt="Selkirk" class="paddle-image" onerror="this.src='https://placehold.co/400x180/00D4FF/white?text=Selkirk+Vanguard'"><div class="paddle-name">Selkirk Vanguard Control</div><div class="paddle-price">$99</div><button class="affiliate-link" onclick="window.open('https://www.amazon.com/s?k=selkirk+vanguard','_blank')">Check Price on Amazon</button></div>
         </div>
     </section>
-    
     <section class="section" id="pro">
         <div class="pro-section">
-            <h2>🚀 PicklePro Premium</h2>
+            <h2>PicklePro Premium</h2>
             <p>Unlock your full potential with AI-powered coaching</p>
-            
-            <ul class="pro-features">
-                <li>Unlimited AI Coach analysis</li>
-                <li>Personalized drill plans</li>
-                <li>Video form analysis</li>
-                <li>Exclusive tutorials</li>
-                <li>Priority court booking</li>
-            </ul>
-            
+            <ul class="pro-features"><li>Unlimited AI Coach analysis</li><li>Personalized drill plans</li><li>Video form analysis</li><li>Exclusive tutorials</li><li>Priority court booking</li></ul>
             <div class="pro-price">$9.99<span>/month</span></div>
-            <button class="cta-button" style="background: white; color: var(--primary);">Start Free Trial</button>
-            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Cancel anytime. No questions asked.</p>
+            <button class="cta-button" style="background:white;color:var(--primary);">Start Free Trial</button>
         </div>
     </section>
-    
     <section class="section" id="courts">
-        <h2 class="section-title">📍 Find Courts Near You</h2>
+        <h2 class="section-title">Find Courts Near You</h2>
         <div class="court-finder">
-            <input type="text" placeholder="Enter your city or zip code..." id="courtSearch">
+            <div class="court-search-box">
+                <input type="text" id="locationInput" placeholder="Enter your city or zip code...">
+                <button onclick="searchCourts()">Find Courts</button>
+            </div>
+            <div id="map"><iframe id="mapFrame" width="100%" height="100%" style="border:0;border-radius:12px;" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spickleball+courts!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus"></iframe></div>
             <div class="court-list" id="courtResults">
-                <div class="court-item">
-                    <div>
-                        <strong>Central Park Courts</strong>
-                        <p style="color: #666; font-size: 0.9rem;">4 courts - Outdoor</p>
-                    </div>
-                    <span style="color: var(--primary);">★ 4.8</span>
-                </div>
-                <div class="court-item">
-                    <div>
-                        <strong>Recreation Center</strong>
-                        <p style="color: #666; font-size: 0.9rem;">6 courts - Indoor</p>
-                    </div>
-                    <span style="color: var(--primary);">★ 4.5</span>
-                </div>
-                <div class="court-item">
-                    <div>
-                        <strong>Sports Complex</strong>
-                        <p style="color: #666; font-size: 0.9rem;">8 courts - Both</p>
-                    </div>
-                    <span style="color: var(--primary);">★ 4.7</span>
-                </div>
+                <div class="court-item" onclick="focusCourt('Central Park')"><div><strong>Central Park Courts</strong><p style="color:#666;font-size:0.9rem;">4 courts - Outdoor</p></div><span style="color:var(--primary);">★ 4.8</span></div>
+                <div class="court-item" onclick="focusCourt('Recreation Center')"><div><strong>Recreation Center</strong><p style="color:#666;font-size:0.9rem;">6 courts - Indoor</p></div><span style="color:var(--primary);">★ 4.5</span></div>
+                <div class="court-item" onclick="focusCourt('Sports Complex')"><div><strong>Sports Complex</strong><p style="color:#666;font-size:0.9rem;">8 courts - Both</p></div><span style="color:var(--primary);">★ 4.7</span></div>
+                <div class="court-item" onclick="focusCourt('Community Center')"><div><strong>Community Center</strong><p style="color:#666;font-size:0.9rem;">3 courts - Indoor</p></div><span style="color:var(--primary);">★ 4.3</span></div>
+                <div class="court-item" onclick="focusCourt('Memorial Park')"><div><strong>Memorial Park</strong><p style="color:#666;font-size:0.9rem;">5 courts - Outdoor</p></div><span style="color:var(--primary);">★ 4.6</span></div>
             </div>
         </div>
     </section>
-    
     <section class="section">
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">50K+</div>
-                <div class="stat-label">Downloads</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">4.9</div>
-                <div class="stat-label">App Rating</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">$12K</div>
-                <div class="stat-label">Monthly Revenue</div>
-            </div>
-        </div>
+        <div class="stats"><div class="stat"><div class="stat-number">50K+</div><div class="stat-label">Downloads</div></div><div class="stat"><div class="stat-number">4.9</div><div class="stat-label">App Rating</div></div><div class="stat"><div class="stat-number">$12K</div><div class="stat-label">Monthly Revenue</div></div></div>
     </section>
-    
-    <footer>
-        <p>🏓 PicklePro - Made with ❤️ for pickleball players</p>
-        <p style="margin-top: 1rem; opacity: 0.6;">© 2026 PicklePro. All rights reserved.</p>
-    </footer>
-    
+    <footer><p>PicklePro - Made for pickleball players</p><p style="margin-top:1rem;opacity:0.6;">© 2026 PicklePro. All rights reserved.</p></footer>
     <script>
-        // Track clicks
-        document.querySelectorAll('.affiliate-link').forEach(button => {
-            button.addEventListener('click', () => {
-                console.log('Affiliate click tracked!');
-            });
-        });
-        
-        // Court search (demo)
-        document.getElementById('courtSearch').addEventListener('input', (e) => {
-            console.log('Searching:', e.target.value);
-        });
+        function searchCourts() {
+            const location = document.getElementById('locationInput').value;
+            if (location) {
+                const mapFrame = document.getElementById('mapFrame');
+                mapFrame.src = `https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spickleball+courts+${encodeURIComponent(location)}!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus`;
+            }
+        }
+        function focusCourt(name) {
+            document.querySelectorAll('.court-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
     </script>
 </body>
 </html>
