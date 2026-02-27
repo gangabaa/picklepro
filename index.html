@@ -62,6 +62,8 @@
         .court-item { padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
         .court-item:hover { background: #f5f5f5; }
         .court-item.active { background: #e8f5e9; border-left: 4px solid var(--primary); }
+        .court-distance { color: var(--primary); font-size: 0.85rem; font-weight: 500; }
+        .court-address { color: #666; font-size: 0.85rem; }
         footer { background: var(--dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
         .stats { display: flex; justify-content: space-around; padding: 2rem; background: white; margin: 2rem 0; border-radius: 12px; }
         .stat { text-align: center; }
@@ -161,16 +163,84 @@
     </section>
     <footer><p>PicklePro - Made for pickleball players</p><p style="margin-top:1rem;opacity:0.6;">© 2026 PicklePro. All rights reserved.</p></footer>
     <script>
-        function searchCourts() {
-            const location = document.getElementById('locationInput').value;
-            if (location) {
-                const mapFrame = document.getElementById('mapFrame');
-                mapFrame.src = `https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spickleball+courts+${encodeURIComponent(location)}!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus`;
+        // Sample courts database - in production, use Google Places API
+        const courtsDatabase = {
+            'default': [
+                { name: 'Central Park Courts', address: '123 Park Ave, New York, NY', distance: '0.3 mi', rating: 4.8, courts: 4 },
+                { name: 'Recreation Center', address: '456 Main St, New York, NY', distance: '0.8 mi', rating: 4.5, courts: 6 },
+                { name: 'Sports Complex', address: '789 Sports Dr, New York, NY', distance: '1.2 mi', rating: 4.7, courts: 8 },
+                { name: 'Community Center', address: '321 Community Ln, New York, NY', distance: '1.5 mi', rating: 4.3, courts: 3 },
+                { name: 'Memorial Park', address: '654 Park Blvd, New York, NY', distance: '2.1 mi', rating: 4.6, courts: 5 }
+            ]
+        };
+        
+        function generateSampleCourts(location) {
+            const courts = [];
+            const locations = [
+                { name: 'Downtown Pickleball Club', suffix: 'Main St' },
+                { name: 'Eastside Sports Center', suffix: 'East Ave' },
+                { name: 'Westfield Courts', suffix: 'West Blvd' },
+                { name: 'North Recreation', suffix: 'North Rd' },
+                { name: 'South Park Complex', suffix: 'South Dr' },
+                { name: 'Lake View Courts', suffix: 'Lake Way' },
+                { name: 'Hillside Pickleball', suffix: 'Hilltop Ln' },
+                { name: 'Valley Sports Hub', suffix: 'Valley Pkwy' }
+            ];
+            
+            for (let i = 0; i < 8; i++) {
+                courts.push({
+                    name: locations[i].name,
+                    address: `${100 + i * 50} ${locations[i].suffix}, ${location}`,
+                    distance: (0.2 + i * 0.3).toFixed(1) + ' mi',
+                    rating: (4.0 + Math.random() * 0.9).toFixed(1),
+                    courts: Math.floor(2 + Math.random() * 8)
+                });
             }
+            return courts;
         }
-        function focusCourt(name) {
+        
+        function renderCourts(courts) {
+            const courtList = document.getElementById('courtResults');
+            courtList.innerHTML = courts.map(court => `
+                <div class="court-item" onclick="focusCourt(this)">
+                    <div>
+                        <strong>${court.name}</strong>
+                        <p class="court-address">${court.address}</p>
+                        <p class="court-address">${court.courts} courts</p>
+                    </div>
+                    <div style="text-align:right;">
+                        <span class="court-distance">${court.distance}</span><br>
+                        <span style="color:var(--primary);">★ ${court.rating}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function searchCourts() {
+            const location = document.getElementById('locationInput').value.trim();
+            if (!location) {
+                alert('Please enter a location');
+                return;
+            }
+            
+            // Update map
+            const mapFrame = document.getElementById('mapFrame');
+            mapFrame.src = `https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spickleball+courts+${encodeURIComponent(location)}!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus`;
+            
+            // Show loading
+            const courtList = document.getElementById('courtResults');
+            courtList.innerHTML = '<div class="loading-spinner">Searching for courts near ' + location + '...</div>';
+            
+            // Generate sample results after brief delay
+            setTimeout(() => {
+                const courts = generateSampleCourts(location);
+                renderCourts(courts);
+            }, 1500);
+        }
+        
+        function focusCourt(element) {
             document.querySelectorAll('.court-item').forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            element.classList.add('active');
         }
     </script>
 </body>
